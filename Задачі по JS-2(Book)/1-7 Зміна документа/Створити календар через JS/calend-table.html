@@ -39,6 +39,7 @@
     table {
       margin: 5px;
       border-collapse: collapse;
+      box-shadow: 0 0 5px rgb(70, 174, 235);
     }
 
     td,
@@ -112,7 +113,7 @@
         // Вкладаємо у контейнер calendar
         monthContainer.append(calendar);
 
-        
+        // ОСНОВНА ФУНКЦІЯ
         function createCalendar(elem, year, month) {
 
             
@@ -163,7 +164,7 @@
 
               
 
-            // Працюємо з датою
+          // ПРАЦЮЄМО З ДАТОЮ
 
           // Отримаємо дату користувача
           let userDate = new Date(year, month );
@@ -226,7 +227,7 @@
       table.deleteRow(table.rows.length - 1);
       }
 
-
+      
     }
 
     // Створюємо циклом календар на цілий рік
@@ -259,6 +260,26 @@
         for (let i = 0; i < 12; i++) {
           createCalendar(calendar, year, i)
         } 
+
+      // ПІДКРАШАЄМО ДЕНЬ ТИЖНЯ ТА РАМКУ ЦЬОГО РОКУ
+      if (new Date(year).getFullYear() == new Date().getFullYear() ) {
+        let thisDate = new Date().getDate();
+        let thisMonth = new Date().getMonth();
+        let secondaryTdCollection = calendar.children[thisMonth].querySelectorAll('td');
+
+        // рамка/тінь для поточного місяця
+        calendar.children[thisMonth].style.boxShadow = "0 0 8px blue";
+
+          for (let cell of secondaryTdCollection) {
+            if (cell.innerHTML == thisDate) {
+              cell.style.backgroundColor = '#acd8aa';
+            }
+          }
+        
+        
+
+        
+      }
 
 
         
