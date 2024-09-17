@@ -25,6 +25,8 @@
     }
 
     h1 {
+      text-decoration: underline  3px rgba(70, 175, 235, 0.659);
+      text-underline-offset: 10px;
       text-shadow: -2px -3px 4px white;
       text-align: center;
       margin-right: 0%;
@@ -39,7 +41,7 @@
     table {
       margin: 5px;
       border-collapse: collapse;
-      box-shadow: 0 0 5px rgb(70, 174, 235);
+      box-shadow: 0 0 8px rgb(70, 174, 235);
     }
 
     td,
@@ -95,7 +97,7 @@
 </style>
 <body>
   <div class="inputPanel">
-    <input type="text" id="yearField" placeholder="1900">
+    <input type="text" id="yearField" >
     <button type="submit" id="button">Ok</button>
   </div>
 
@@ -234,6 +236,7 @@
 
     // Створюємо поля для вводу року
     let inputYear = document.getElementById('yearField');
+    inputYear.placeholder = new Date().getFullYear();
     let inputYearButton = document.getElementById('button');
     
 
@@ -248,9 +251,12 @@
         if (event.type === 'click' || (even.type === 'keydown' && event.key === 'Enter')) {
         
         // Беремо значення року для кожного кліка чи натискання Enter
-        let year = inputYear.value;
-          // записуємо рік у H1
-        yearTitle.innerHTML = inputYear.value + ' Рік';
+        // Перевіряємо щоб рік був більше 1900 та беремо дані по дефолту з плейсхолдера інпута
+        let year = (inputYear.value < 1900 || inputYear.value.trim() == "") ? inputYear.getAttribute('placeholder') : inputYear.value;
+        
+        
+        // записуємо рік у H1
+        yearTitle.innerHTML = year + ' Рік';
 
         // Очищаємо HTML від минулого створення календарів
         calendar.innerHTML = '';
@@ -314,16 +320,6 @@
         inputYearButton.click()
       }
     })
-
-   
-
-
-    
-    
-              
-
-    
-
 
     </script>
 
