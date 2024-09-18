@@ -10,6 +10,11 @@
     body {
         background-color: #7c7878;
         font-size: 1.7em;
+        
+    }
+
+    .inputPanel {
+      display: block;
     }
 
     div {
@@ -22,6 +27,7 @@
     .monthContainer {
       display: block;
       margin-left: 2.5em;
+      margin-bottom: 1em;
     }
 
     h1 {
@@ -56,26 +62,74 @@
       background-color: #E6E6E6;
       
     }
-    /* 1 Col */
-     @media (min-width: 420px) { 
-      div {
-        width: 300px;
-        
-      }
-    }
 
     /* МІНІМАЛЬНИЙ АДАПТИВ */
+    /* 1 Col */
+     @media (min-width: 320px) {
+
+      input { 
+        width: 220px;
+        margin-left: 0px;
+        
+      }
+      
+
+      .monthContainer {
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      
+      .inputPanel {
+      display: block;
+      margin-left: 20px;
+        
+      
+    }
+
+      
+      
+    }
+
+    
       /* Middle 2colls */
      @media (min-width: 700px) { 
+
+      input { 
+        width: 500px;
+        margin-left: 40px;
+        
+      }
       
-      div {width: 700px;}
+    .monthContainer {
+        width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+
+
       h1 {margin-right: 10%;}
+      
 
     } 
       /* 3 colls */
       @media (min-width: 1000px) { 
+
+      input { 
+        width: 700px;
+        margin-left: 70px;
+        
+      }
+
       
-      div {width: 1000px}
+    .monthContainer {
+        width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
       h1 {margin-right: 10%;}
 
 
@@ -84,8 +138,17 @@
     
 /* 4 colls */
 @media (min-width: 1200px) { 
+
+    input {
+      margin-left: 350px;
+    }
       
-      div {width: 1200px}
+    .monthContainer {
+        width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
       h1 {margin-right: 0%;}
 
 
