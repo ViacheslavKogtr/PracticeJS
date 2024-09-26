@@ -6,6 +6,14 @@
     <title>Calend-table</title>
 </head>
 
+<!-- 
+ЗАВДАННЯ
+
+1. сворити monthCOntainer y BODY.
+2. вмонтувати в нього inputPanel
+
+-->
+
 <style>
     body {
         background-color: #7c7878;
@@ -14,19 +22,23 @@
     }
 
     .inputPanel {
-      display: block;
-      
+      align-self: center;
+    
     }
 
-    div {
-      max-width: 1200px;
+    .calendarBox {
+     
       display: inline-flex;
       flex-wrap: wrap;
+      justify-content: space-around;
     
     }
 
     .monthContainer {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       margin-left: 2.5em;
       margin-bottom: 1em;
     }
@@ -80,16 +92,14 @@
         margin-left: auto;
         margin-right: auto;
       }
-      
-      
-      .inputPanel {
-      display: block;
-      margin-left: 20px;
-        
-      
-    }
 
       
+      
+      
+      
+      
+      
+         
       
     }
 
@@ -98,8 +108,8 @@
      @media (min-width: 700px) { 
 
       input { 
-        width: 500px;
-        margin-left: 10px;
+        width: 400px;
+        margin-left: 0px;
         
       }
       
@@ -109,18 +119,16 @@
         margin-right: auto;
       }
 
+      .calendarBox {max-width: 620px;}
 
-
-      h1 {margin-right: 10%;}
       
-
     } 
       /* 3 colls */
       @media (min-width: 1000px) { 
 
       input { 
         width: 700px;
-        margin-left: 70px;
+        
         
       }
 
@@ -131,7 +139,11 @@
         margin-right: auto;
       }
 
-      h1 {margin-right: 10%;}
+      .calendarBox {
+        max-width: 920px;
+      }
+
+      
 
 
     }
@@ -141,8 +153,7 @@
 @media (min-width: 1200px) { 
 
     input {
-      width: 900px;
-      margin-left: 100px;
+      width: 800px;
     }
       
     .monthContainer {
@@ -151,7 +162,11 @@
         margin-right: auto;
       }
 
-      h1 {margin-right: 0%;}
+      .calendarBox {
+        max-width: 1220px;
+      }
+
+     
 
 
     }
@@ -161,26 +176,27 @@
 
 </style>
 <body>
-  
+  <div class="monthContainer" id="monthContainer">
+    <div class="inputPanel">
+      <input type="text" id="yearField" >
+      <button type="submit" id="button">Ok</button>
+    </div>
 
-<div id="calendar">
-  <div class="inputPanel">
-    <input type="text" id="yearField" >
-    <button type="submit" id="button">Ok</button>
+    <div id="calendar" class="calendarBox"></div>
   </div>
+
+
+  
   
 </div>
 
     <script name="mainFunc">
         let calendar = document.getElementById('calendar');
-        // Додаємо DIV для кращої верстки з іменами місяців
-        let monthContainer = document.createElement('div');
-        monthContainer.className = 'monthContainer';
-        document.body.append(monthContainer);
-        // Вкладаємо у контейнер calendar
-        monthContainer.append(calendar);
+        // Додаємо календар у  DIV для кращої верстки з іменами місяців
+        let monthCOntainer = document.getElementById('monthContainer');
+        monthCOntainer.append(calendar);
 
-        // ОСНОВНА ФУНКЦІЯ
+                // ОСНОВНА ФУНКЦІЯ
         function createCalendar(elem, year, month) {
 
             
@@ -307,7 +323,8 @@
 
     // Створюємо заголовок для року
         let yearTitle = document.createElement('h1');
-        monthContainer.prepend(yearTitle);
+        calendar.before(yearTitle);
+        
         
         
     // 
@@ -324,10 +341,7 @@
         yearTitle.innerHTML = year + ' Рік';
 
         // Очищаємо HTML від минулого створення календарів
-        calendar.innerHTML = ` <div class="inputPanel">
-    <input type="text" id="yearField" >
-    <button type="submit" id="button">Ok</button>
-  </div>`;
+        calendar.innerHTML = '';
 
         
         // Створюємо календарі через цикл
