@@ -15,6 +15,7 @@
 
     .inputPanel {
       display: block;
+      
     }
 
     div {
@@ -98,7 +99,7 @@
 
       input { 
         width: 500px;
-        margin-left: 40px;
+        margin-left: 10px;
         
       }
       
@@ -140,7 +141,8 @@
 @media (min-width: 1200px) { 
 
     input {
-      margin-left: 350px;
+      width: 900px;
+      margin-left: 100px;
     }
       
     .monthContainer {
@@ -159,13 +161,13 @@
 
 </style>
 <body>
+  
+
+<div id="calendar">
   <div class="inputPanel">
     <input type="text" id="yearField" >
     <button type="submit" id="button">Ok</button>
   </div>
-
-<div id="calendar">
-  
   
 </div>
 
@@ -322,7 +324,10 @@
         yearTitle.innerHTML = year + ' Рік';
 
         // Очищаємо HTML від минулого створення календарів
-        calendar.innerHTML = '';
+        calendar.innerHTML = ` <div class="inputPanel">
+    <input type="text" id="yearField" >
+    <button type="submit" id="button">Ok</button>
+  </div>`;
 
         
         // Створюємо календарі через цикл
