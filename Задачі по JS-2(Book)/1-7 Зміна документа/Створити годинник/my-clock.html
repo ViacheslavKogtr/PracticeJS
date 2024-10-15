@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&
 family=Jersey+25&family=Roboto+Mono:ital,wght@0,100..700&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&
 family=Martian+Mono:wght@100..800&family=Rubik:ital,wght@0,300..900;1,300..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&
-family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Great+Vibes&family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
 </head>
 
 
@@ -98,7 +98,7 @@ body { font-family: "Martian Mono", monospace;}
       justify-content: center;
       align-items: center;
       box-sizing: border-box;
-      border: 5px solid blue;
+      border: 5px solid rgba(154, 79, 225, 0.945);
       border-radius: 30px ;
 
 
@@ -112,7 +112,7 @@ body { font-family: "Martian Mono", monospace;}
       flex-direction: column;
       justify-content: start;
       align-items: center;
-      border: 2px solid wheat;
+      border: 2px solid rgb(115, 195, 183);
       border-radius: 25px ;
 
     }
@@ -162,22 +162,28 @@ body { font-family: "Martian Mono", monospace;}
       margin: 0;
       /* display: block; */
       flex: 0 0 0px;
-      padding: 0px 60px;
+      padding: 3px 52px;
       border: 2px solid white;
-      font-size: 4.5em;
-      letter-spacing: -5px;
+      border-left: none;
+      border-right: none;
+      font-size: 4.6em;
+      letter-spacing: -4px;
       font-variant-numeric: tabular-nums;
       text-align: center;
-      color: rgb(78, 181, 100);   
-      text-shadow: 0 0 2px black;
+      color: rgb(24, 150, 51);   
+      text-shadow:
+       28px -3px 80px rgb(25, 224, 65),
+       0 0 8px rgb(114, 46, 150),
+       2px 2px 0 white, -2px -2px 0 white,
+       -2px 2px 0 white, 2px -2px 0 white;
+
       z-index: 2;
     }
 
-    /* Панель навігації та року/місяця */
+    /* Панель навігації, лампи, року/місяця */
     .navigationInfo {
       /* border: 1px solid red; */
       width: 485px;
-      padding: 8px 0px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -185,27 +191,41 @@ body { font-family: "Martian Mono", monospace;}
 
     .navigation {
       margin-left: 10px;
+      margin-bottom: 2px;
       display: flex;
       justify-self: flex-start;
       align-self: center;
 
     }
-
+    /* Кнопки */
     .start, .stop {
+      box-shadow: 2px 1px 5px grey, 0px 0px 5px rgb(40, 182, 40);
       vertical-align: middle;
       font-size: 1.2rem;
       text-align: center;
+      border: 2px solid rgb(206, 206, 206);
       border-radius: 50%;
+
+      transition: ease-in-out 0.2s;
     }
+
 
     .start {
       padding-left: 4px;
-      display: block;
-      background-color: rgb(161, 228, 61);
+      /* background-color: rgb(159, 215, 74); */
+      background-color: rgb(220, 220, 14);
       width: 2rem;
       height: 2rem;
       margin-right: 7px;
       
+    }
+
+    .start:hover {
+      background-color: rgb(182, 182, 16);
+      border-color:  grey;
+    }
+    .start:active {
+      transform: scale(0.9);
     }
 
     .stop {
@@ -219,12 +239,51 @@ body { font-family: "Martian Mono", monospace;}
       
     }
 
+    .stop:hover {
+      background-color: rgb(160, 12, 12);
+      border-color:  grey;
+    }
 
+    .stop:active {
+      transform: scale(0.9);
+    }
+    
+
+    /* Лампа */
+    .lampCover {
+      display: flex; 
+      /* flex-direction: column; */
+      justify-self: center;
+      flex: 2 1 40rem;
+      margin-left: 12px;
+      margin-right: 5px;
+      padding: 7px 0px;
+      background-color: aquamarine;
+
+      border-radius: 35%;
+      box-shadow: 0 0 10px aquamarine;
+    }
+
+    .lamp {
+      flex: 2 1 20px;
+      /* width: 230px; */
+      height: 4px;
+      margin-left: 3px;
+
+      background-color: white;
+
+      border-radius: 35%;
+      box-shadow: 0 0 10px white;
+
+  }
+
+
+    /* Дата */
     .dating {
       width: 300px;
-      margin-right: 20px;
+      margin-right: 15px;
+      margin-bottom: px;
       display: flex;
-      justify-self: flex-end;
       align-self: center;
       justify-content: end;
       align-items: end;
@@ -232,11 +291,16 @@ body { font-family: "Martian Mono", monospace;}
     }
 
     .monthInfo::first-letter {
-      font-size: 1.7rem;
+      font-size: 2.3rem;
+      color: rgb(246, 9, 9);
     }
 
     .monthInfo {
+      /* font-family: "Great Vibes", cursive; */
+      font-family: "Dancing Script", cursive;
+      font-size: 1.5rem;
       margin-right: 5px;
+      color: rgb(159, 215, 74);
     }
 
     .monthInfo, .yearInfo {
@@ -246,7 +310,8 @@ body { font-family: "Martian Mono", monospace;}
 
     .yearInfo {
       font-size: 1.4rem;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
+      color: rgb(234, 234, 13);
     }
     
 
@@ -258,7 +323,7 @@ body { font-family: "Martian Mono", monospace;}
       width: 200px;
       height: 100px;
       box-sizing: border-box;
-      border: 5px solid blue;
+      border: 5px solid rgba(154, 79, 225, 0.945);
       border-radius: 50%;
       background-color: #0a0707;
 
@@ -295,15 +360,23 @@ body { font-family: "Martian Mono", monospace;}
               </ul>
               <p class="timeR" id="timingDisplay"></p>
               <div class="navigationInfo">
+                
                 <div class="navigation">
                   <button class="start">&#9654</button>
                   <button class="stop">||</button>
                 </div>
+
+                <div class="lampCover">
+                  <div class="lamp"></div>
+                </div>
+
                 <div class="dating">
-                  <p class="monthInfo">Month</p>
+                  <p class="monthInfo">May</p>
                   <p  class="yearInfo">2024</p>
                 </div>
+              
               </div>
+            
             </div>
           </div>
           <div class="clockHat"></div>
