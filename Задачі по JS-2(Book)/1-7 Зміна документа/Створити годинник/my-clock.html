@@ -98,11 +98,17 @@ body { font-family: "Martian Mono", monospace;}
       justify-content: center;
       align-items: center;
       box-sizing: border-box;
-      border: 5px solid rgba(154, 79, 225, 0.945);
+      border: 3px solid rgba(154, 79, 225, 0.945);
       border-radius: 30px ;
+
+      
 
 
       z-index: 1;
+    }
+
+    .clockContainer, .clockHat {
+      box-shadow: 0 0 12px rgba(154, 79, 225, 0.945);
     }
 
     .timeWrapper {
@@ -142,6 +148,7 @@ body { font-family: "Martian Mono", monospace;}
           /* font-family: "Ubuntu", sans-serif; */
           font-size: 1.4rem;
           text-align: center;
+          text-shadow: -2px 2px 8px black;
 
           color: white;
           border: 1px solid white;
@@ -370,9 +377,9 @@ body { font-family: "Martian Mono", monospace;}
                   <div class="lamp"></div>
                 </div>
 
-                <div class="dating">
-                  <p class="monthInfo">May</p>
-                  <p  class="yearInfo">2024</p>
+                <div id="yearMonthInfo" class="dating">
+                  <p class="monthInfo"></p>
+                  <p  class="yearInfo"></p>
                 </div>
               
               </div>
@@ -386,7 +393,37 @@ body { font-family: "Martian Mono", monospace;}
 
     </div>
 
+<!-- Скрипт місяця та днів тижня -->
+  <script type="module">
 
+    // робимо функцію для перевірки дня тижня
+   // відповідного до індексу елементів списку
+          function rightWeekDay() {
+            let day = new Date().getDay();
+            return (day === 0) ? 6 : day - 1;
+
+          }
+
+    let months = [
+      'January', 'February',
+      'March', 'April', 'May',
+      'June', 'July', 'August',
+      'September', 'October', 'November',
+      'December',];
+    
+    let thisDay = rightWeekDay();
+    let weekList = document.getElementById('daysOfWeek');
+    let infoYearMonth = document.getElementById('yearMonthInfo');
+    
+    infoYearMonth.children[0].innerHTML = months[new Date().getMonth()];
+    infoYearMonth.children[1].innerHTML = new Date().getFullYear();
+
+    // замальовуємо день тижня
+   weekList.children[rightWeekDay()].style.backgroundColor = 'rgb(234, 234, 13)';
+
+
+
+  </script>
 
     <!-- СКРИПТ ГОДИННИКА -->
     <script type="module">
