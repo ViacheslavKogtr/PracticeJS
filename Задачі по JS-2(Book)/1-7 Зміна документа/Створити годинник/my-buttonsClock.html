@@ -290,6 +290,8 @@ body { font-family: "Martian Mono", monospace;}
 
     /* Анатомія годинника */
     .clockHat {
+      font-family: "Kanit", sans-serif;
+      font-size: 2.1rem;
       position: absolute;
       top: 7.3rem;
       left: 37%;
@@ -300,6 +302,30 @@ body { font-family: "Martian Mono", monospace;}
       border-radius: 50%;
       background-color: #0a0707;
 
+    }
+
+    /* Число дня місяця */
+
+    .dateInfo {
+      position: absolute;
+      left: 70px;
+      bottom: 45px;
+    }
+
+    .dateNumber, .datePanelEnding {
+      display: inline-flex;
+      color: rgb(189, 189, 65);
+      
+    }
+
+    .dateNumber {
+      text-shadow: -1px 0px 0px rgb(172, 112, 40);
+    }
+
+    .datePanelEnding {
+      font-size: 1rem;
+      margin-left: -5px;
+      color: rgb(145, 198, 66);
     }
 
     .leftLeg, .rightLeg {
@@ -352,15 +378,24 @@ body { font-family: "Martian Mono", monospace;}
             
             </div>
           </div>
-          <div class="clockHat"></div>
+          <div class="clockHat">
+            <div class="dateInfo">
+              <p id="datePanel" class="dateNumber"></p>
+              <p class="datePanelEnding">th</p>
+            </div>
+          </div>
            <div class="leftLeg"></div>
            <div class="rightLeg"></div>
         </div>
 
     </div>
 
-<!-- Скрипт місяця та днів тижня -->
+<!-- Скрипт місяця, днів тижня, числа місяця -->
   <script type="module">
+
+    // число місяця
+    let monthNumber = document.getElementById('datePanel');
+    monthNumber.innerHTML = new Date().getDate() + monthNumber.innerHTML;
 
     // робимо функцію для перевірки дня тижня
    // відповідного до індексу елементів списку
