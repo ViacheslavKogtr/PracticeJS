@@ -393,9 +393,15 @@ body { font-family: "Martian Mono", monospace;}
 <!-- Скрипт місяця, днів тижня, числа місяця -->
   <script type="module">
 
-    // число місяця
+
+  // число місяця
+  // функція отримання 2-символьного числа місяця
+    function getSecondSymbolDate(numberDate = new Date().getDate()) {
+      return (numberDate.toString().length < 2) ? '0' + numberDate : numberDate; 
+    }
+
     let monthNumber = document.getElementById('datePanel');
-    monthNumber.innerHTML = new Date().getDate() + monthNumber.innerHTML;
+    monthNumber.innerHTML = getSecondSymbolDate() + monthNumber.innerHTML;
 
     // робимо функцію для перевірки дня тижня
    // відповідного до індексу елементів списку
