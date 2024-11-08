@@ -381,7 +381,7 @@ body { font-family: "Martian Mono", monospace;}
           <div class="clockHat">
             <div class="dateInfo">
               <p id="datePanel" class="dateNumber"></p>
-              <p class="datePanelEnding">th</p>
+              <p id="datePanelEnding" class="datePanelEnding">th</p>
             </div>
           </div>
            <div class="leftLeg"></div>
@@ -396,12 +396,37 @@ body { font-family: "Martian Mono", monospace;}
 
   // число місяця
   // функція отримання 2-символьного числа місяця
+
+
     function getSecondSymbolDate(numberDate = new Date().getDate()) {
       return (numberDate.toString().length < 2) ? '0' + numberDate : numberDate; 
     }
 
     let monthNumber = document.getElementById('datePanel');
-    monthNumber.innerHTML = getSecondSymbolDate() + monthNumber.innerHTML;
+    let monthNumberEnding = document.getElementById('datePanelEnding');
+    
+
+    // Випадки на різні закінчення чисел місяця
+    monthNumber.innerHTML = getSecondSymbolDate();
+
+    if (
+      monthNumber.innerHTML == '01'||
+      monthNumber.innerHTML == '21'||
+      monthNumber.innerHTML == '31') {
+        monthNumberEnding.innerHTML = 'st';
+    } else
+    
+    if (monthNumber.innerHTML == '02'|| monthNumber.innerHTML == '22') {
+      monthNumberEnding.innerHTML = 'nd';
+    } else
+    
+    if (monthNumber.innerHTML == '03' || monthNumber.innerHTML == '23') {
+      monthNumberEnding.innerHTML = 'rd';
+    } else  {
+      monthNumberEnding.innerHTML = 'th';} 
+
+
+
 
     // робимо функцію для перевірки дня тижня
    // відповідного до індексу елементів списку
